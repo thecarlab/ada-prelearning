@@ -5,7 +5,7 @@
     <img src="logo/CARLabLogo.png" alt="CAR Lab logo" width="150">
   </p>
 
-  <h1>ADA Prelearning</h1>
+  <h1>🚗 ADA Prelearning</h1>
 
   <p>
     A friendly browser-based prep course for students joining the
@@ -13,13 +13,13 @@
   </p>
 
   <p>
-    <a href="https://www.pcs.udel.edu/autonomous-driving/"><strong>Official UD Autonomous Driving Academy Website</strong></a>
+    <a href="https://www.pcs.udel.edu/autonomous-driving/"><strong>🌐 Official UD Autonomous Driving Academy Website</strong></a>
   </p>
 </div>
 
 ---
 
-## Welcome
+## 👋 Welcome
 
 This repo is a confidence builder before camp. You will try a browser coding environment, terminal commands, beginner Python, and a small autonomous-driving learning path.
 
@@ -27,7 +27,7 @@ The units build from basic terminal and Python skills into perception, localizat
 
 You do not need to install Python, VS Code, ROS 2, a simulator, or any hardware.
 
-## Start Here
+## 🚀 Start Here
 
 Please do not create a Codespace directly from the main ADA course repository. Your experiments should happen in your own copy so the course materials stay clean for everyone.
 
@@ -55,35 +55,35 @@ https://codespaces.new/YOUR-GITHUB-USERNAME/ada-prelearning
 
 Replace `YOUR-GITHUB-USERNAME` with your GitHub username. This repo is intended to be public on GitHub, so anyone can view the learning materials. You may still need to sign in to GitHub to create a fork and Codespace.
 
-## Learning Path
+## 🗺️ Learning Path
 
 Follow the units in order. Each unit owns one part of the preparation path:
 
-| Unit | Topic | What you will practice |
-| --- | --- | --- |
-| 0 | [Getting Started](docs/getting_started.md) | Open your own browser workspace. |
-| 1 | [Linux Scavenger Hunt](docs/unit1_linux.md) | Use terminal commands and meet the AV architecture words. |
-| 2 | [Python Vehicle Assistant](docs/unit2_python_vehicle_assistant.md) | Practice beginner Python state and control flow. |
-| 3 | [Camera And Point-Cloud Perception](docs/unit3_sensor_and_decision.md) | Read camera and point-cloud sensor clues. |
-| 4 | [Localization And Coordinate Frames](docs/unit4_autonomous_driving_basics.md) | Move perception results from ego frame into map frame. |
-| 5 | [Tiny ROS 2 Teaser](docs/unit5_ros2_teaser.md) | Organize pieces as ROS-style nodes, topics, messages, and launch. |
-| 6 | [Mini Autonomy Stack Challenge](docs/unit6_final_challenge.md) | Connect the earlier pieces in one final mini challenge. |
+| Unit | Icon | Topic | What you will practice |
+| :---: | :---: | --- | --- |
+| 0 | 🧭 | [Getting Started](docs/getting_started.md) | Open your own browser workspace. |
+| 1 | 🐧 | [Linux Scavenger Hunt](docs/unit1_linux.md) | Use terminal commands and meet the AV architecture words. |
+| 2 | 🐍 | [Python Vehicle Assistant](docs/unit2_python_vehicle_assistant.md) | Practice beginner Python state and control flow. |
+| 3 | 📷 | [Camera And Point-Cloud Perception](docs/unit3_sensor_and_decision.md) | Read camera and point-cloud sensor clues. |
+| 4 | 🗺️ | [Localization And Coordinate Frames](docs/unit4_autonomous_driving_basics.md) | Move perception results from ego frame into map frame. |
+| 5 | 🤖 | [Tiny ROS 2 Teaser](docs/unit5_ros2_teaser.md) | Organize pieces as ROS-style nodes, topics, messages, and launch. |
+| 6 | 🏁 | [Mini Autonomy Stack Challenge](docs/unit6_final_challenge.md) | Connect the earlier pieces in one final mini challenge. |
 
-## What You Will Learn
+## 🎯 What You Will Learn
 
-- Open a coding environment in the browser.
-- Use a few simple terminal commands.
-- Run and edit basic Python scripts.
-- Practice variables, lists, dictionaries, functions, loops, and `if` statements.
-- Learn the core AV modules: sensing, perception, localization, planning, control, and end-to-end AV-agent research.
-- Try simple KITTI tracking-task camera-image perception.
-- Process a KITTI tracking-task LiDAR point cloud with a small perception pipeline.
-- Transform perception clusters from ego coordinates into map coordinates.
-- Preview ROS-style nodes, topics, messages, and launch concepts.
-- Generate an HTML ego-vehicle route visualization that works in Codespaces.
-- Open a small website that visualizes KITTI tracking-task camera images and LiDAR point clouds.
+- 🖥️ Open a coding environment in the browser.
+- 💻 Use a few simple terminal commands.
+- 🐍 Run and edit basic Python scripts.
+- 🧩 Practice variables, lists, dictionaries, functions, loops, and `if` statements.
+- 🚙 Learn the core AV modules: sensing, perception, localization, planning, control, and end-to-end AV-agent research.
+- 📷 Try simple KITTI tracking-task camera-image perception.
+- 📡 Process a KITTI tracking-task LiDAR point cloud with a small perception pipeline.
+- 🗺️ Transform perception clusters from ego coordinates into map coordinates.
+- 🤖 Preview ROS-style nodes, topics, messages, and launch concepts.
+- 📊 Generate an HTML ego-vehicle route visualization that works in Codespaces.
+- 🌐 Open a small website that visualizes KITTI tracking-task camera images and LiDAR point clouds.
 
-## Quick Test
+## ✅ Quick Test
 
 Open a terminal in your own Codespace and run:
 
@@ -121,7 +121,7 @@ outputs/mini_autonomy_report.html
 
 In Codespaces, open that file and use the built-in preview to see the ego vehicle route.
 
-## KITTI Data Demos
+## 📡 KITTI Data Demos
 
 This repo uses two kinds of data:
 
@@ -151,7 +151,7 @@ web_sim/user_data/pointcloud/000000.bin
 
 The real KITTI Vision Benchmark Suite is much larger and is meant for research. Before publishing real KITTI files, check the dataset terms and citation requirements on the official KITTI page: <https://www.cvlibs.net/datasets/kitti/>
 
-## Web Visualizer
+## 🖼️ Web Visualizer
 
 View the KITTI tracking-task frame sequence in the browser:
 
@@ -193,14 +193,14 @@ The `web_sim/user_data` image and point-cloud folders are ignored by git so larg
 
 Longer KITTI sequences should be added only if your instructor tells you to include them.
 
-## More Scripts To Try
+## 🧪 More Scripts To Try
 
 ```bash
 python scripts/vehicle_assistant.py
 python scripts/fake_distance_sensor.py
 ```
 
-## Troubleshooting
+## 🛠️ Troubleshooting
 
 - If Codespaces takes a minute to open, that is normal. Let it finish loading.
 - If you do not see a terminal, click `Terminal`, then `New Terminal`.
