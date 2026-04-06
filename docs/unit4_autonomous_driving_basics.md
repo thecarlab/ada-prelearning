@@ -20,6 +20,15 @@ Action: TURN RIGHT
 
 In Unit 3, your fake distance number was the sensor input. The output was an action like `MOVE`, `SLOW`, or `STOP`.
 
+Autonomous-driving teams often use more specific names:
+
+- `Perception`: detect lanes, signs, people, cones, and cars.
+- `Localization`: estimate where the ego vehicle is on a map.
+- `Planning`: choose a safe next place to drive.
+- `Control`: turn the plan into steering, throttle, and brake commands.
+
+The ego vehicle means the vehicle we are controlling.
+
 ## Tiny Lane Checker With A List
 
 Run:
@@ -176,3 +185,5 @@ Sample 5: lane is center -> KEEP GOING
 ## Reflection
 
 Which sensor view was easier for you to understand: the lane text list, the fake camera grid, or the fake point-cloud map?
+
+In Unit 6, you will connect these ideas into one mini autonomy stack and view the ego vehicle route in a browser preview.

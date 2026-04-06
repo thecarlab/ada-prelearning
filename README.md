@@ -4,6 +4,8 @@ A tiny, friendly prelearning repo for high school students joining the Universit
 
 This is a confidence builder before camp. You will try a browser coding environment, a few terminal commands, beginner Python, and simple autonomous-driving style logic.
 
+The later units now include a tiny autonomy stack with perception, localization, planning, and control. It also writes a browser-openable HTML/SVG report so students can visualize an ego vehicle driving through a fake mini road scene.
+
 This is not a replacement for the first-day ADA camp ROS 2 class. ROS 2 appears here only as a tiny teaser.
 
 ## Data Note
@@ -41,8 +43,10 @@ This repo is intended to be public on GitHub, so anyone can view the learning ma
 - Use a few simple terminal commands.
 - Run and edit basic Python scripts.
 - Try simple autonomous-driving logic: sensing, deciding, and acting.
+- See how perception, localization, planning, and control can connect.
 - Practice variables, lists, dictionaries, functions, loops, and `if` statements.
 - Visualize tiny fake camera-image and point-cloud data in the terminal.
+- Generate an HTML ego-vehicle route visualization that works in Codespaces.
 - Preview a few autonomous-driving ideas before camp.
 - Get a tiny ROS 2 teaser without learning full ROS 2 yet.
 
@@ -54,7 +58,7 @@ This repo is intended to be public on GitHub, so anyone can view the learning ma
 4. [Unit 3: Sensor And Decision Logic](docs/unit3_sensor_and_decision.md)
 5. [Unit 4: Autonomous Driving Basics](docs/unit4_autonomous_driving_basics.md)
 6. [Unit 5: Tiny ROS 2 Teaser](docs/unit5_ros2_teaser.md)
-7. [Unit 6: Final Challenge](docs/unit6_final_challenge.md)
+7. [Unit 6: Mini Autonomy Stack Challenge](docs/unit6_final_challenge.md)
 
 ## Quick Test
 
@@ -78,7 +82,16 @@ Try one of the visual demos:
 ```bash
 python scripts/fake_camera_grid.py
 python scripts/fake_pointcloud_viewer.py
+python scripts/mini_autonomy_stack.py
 ```
+
+The mini autonomy stack also creates:
+
+```text
+outputs/mini_autonomy_report.html
+```
+
+In Codespaces, open that file and use the built-in preview to see the ego vehicle route.
 
 Other Python scripts to try:
 

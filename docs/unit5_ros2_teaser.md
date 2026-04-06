@@ -38,6 +38,7 @@ In this repo:
 
 - `fake_distance_sensor.py` acts like a tiny sensor helper.
 - `drive_decision.py` acts like a tiny decision helper.
+- `mini_autonomy_stack.py` acts like a tiny connected autonomy system with perception, localization, planning, and control helpers.
 
 They are not real ROS 2 nodes. They are just beginner Python scripts that help you understand the idea.
 
