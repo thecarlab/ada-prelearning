@@ -6,6 +6,12 @@ This is a confidence builder before camp. You will try a browser coding environm
 
 This is not a replacement for the first-day ADA camp ROS 2 class. ROS 2 appears here only as a tiny teaser.
 
+## Data Note
+
+This repo uses tiny fake data only. Some examples are "KITTI-style" because they copy the idea of camera images and LiDAR point clouds used in autonomous-driving research, but they do not include real KITTI files.
+
+The real KITTI Vision Benchmark Suite is much larger and is meant for research. You can learn more from the official KITTI page: <https://www.cvlibs.net/datasets/kitti/>
+
 ## Start In Your Browser
 
 You do not need to install Python, VS Code, ROS 2, a simulator, or any hardware.
@@ -35,6 +41,8 @@ This repo is intended to be public on GitHub, so anyone can view the learning ma
 - Use a few simple terminal commands.
 - Run and edit basic Python scripts.
 - Try simple autonomous-driving logic: sensing, deciding, and acting.
+- Practice variables, lists, dictionaries, functions, loops, and `if` statements.
+- Visualize tiny fake camera-image and point-cloud data in the terminal.
 - Preview a few autonomous-driving ideas before camp.
 - Get a tiny ROS 2 teaser without learning full ROS 2 yet.
 
@@ -63,6 +71,22 @@ Welcome to ADA Prelearning!
 Your browser coding space is ready.
 Today we will practice Python, Linux, and simple driving logic.
 Action: MOVE
+```
+
+Try one of the visual demos:
+
+```bash
+python scripts/fake_camera_grid.py
+python scripts/fake_pointcloud_viewer.py
+```
+
+Other Python scripts to try:
+
+```bash
+python scripts/vehicle_assistant.py
+python scripts/fake_distance_sensor.py
+python scripts/fake_lane_checker.py
+python scripts/drive_decision.py
 ```
 
 ## Troubleshooting

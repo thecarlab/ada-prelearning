@@ -35,6 +35,8 @@ Expected output includes:
 Readiness: parked
 Battery: 80%
 Speed mode: safe
+Last action: PARK
+Commands tried: 1
 ```
 
 Try:
@@ -63,6 +65,41 @@ The script stores simple vehicle state:
 - Battery level.
 - Whether the car is parked or ready.
 - Speed mode.
+- Last action.
+- A history of commands.
+
+## Python Ideas In This Script
+
+Open `scripts/vehicle_assistant.py`.
+
+Look for this dictionary:
+
+```python
+vehicle_state = {
+    "battery_percent": 80,
+    "readiness": "parked",
+    "speed_mode": "safe",
+    "last_action": "PARK",
+}
+```
+
+A dictionary stores related values with names. That is helpful for autonomous driving because a vehicle may track battery, speed, sensors, and decisions at the same time.
+
+Look for this list:
+
+```python
+command_history = []
+```
+
+A list can remember many things in order. This script stores each command you type.
+
+Look for this function:
+
+```python
+def print_status(state, history):
+```
+
+A function is a reusable mini-program. This one prints the vehicle state.
 
 When you type a command, Python checks it with `if`, `elif`, and `else`.
 
@@ -91,4 +128,3 @@ python scripts/vehicle_assistant.py
 ## Reflection
 
 If your vehicle assistant had one new command, what would it be?
-

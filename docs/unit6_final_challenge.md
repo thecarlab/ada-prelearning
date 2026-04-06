@@ -11,6 +11,8 @@ Use `scripts/drive_decision.py` to combine:
 - Fake distance.
 - Fake lane status.
 - A safety threshold.
+- Traffic-light or stop-sign clues.
+- Battery level.
 - One driving action.
 
 ## Run The Starter
@@ -25,9 +27,14 @@ Expected output:
 
 ```text
 ADA drive decision check
-Distance: 8 meters
-Lane: center
+Sensor packet:
+- distance_meters: 8
+- lane_status: center
+- traffic_light: green
+- battery_percent: 72
+- detected_signs: none
 Decision: MOVE
+Reason: path looks clear and lane is centered
 Nice focus, ADA driver!
 ```
 
@@ -38,15 +45,15 @@ Open `scripts/drive_decision.py`.
 Find:
 
 ```python
-stop_distance = 2
-slow_distance = 5
+STOP_DISTANCE = 2
+SLOW_DISTANCE = 5
 ```
 
 Try:
 
 ```python
-stop_distance = 3
-slow_distance = 6
+STOP_DISTANCE = 3
+SLOW_DISTANCE = 6
 ```
 
 Run:
@@ -60,15 +67,25 @@ python scripts/drive_decision.py
 Find:
 
 ```python
-distance_meters = 8
-lane_status = "center"
+sensor_packet = {
+    "distance_meters": 8,
+    "lane_status": "center",
+    "traffic_light": "green",
+    "battery_percent": 72,
+    "detected_signs": [],
+}
 ```
 
 Try:
 
 ```python
-distance_meters = 4
-lane_status = "left"
+sensor_packet = {
+    "distance_meters": 4,
+    "lane_status": "left",
+    "traffic_light": "green",
+    "battery_percent": 72,
+    "detected_signs": [],
+}
 ```
 
 Expected decision:
@@ -79,7 +96,49 @@ Decision: SLOW
 
 The distance rule is checked first because safety comes first.
 
-## Challenge 3: Add A Personal Message
+## Challenge 3: Try A Stop Sign
+
+Change:
+
+```python
+"detected_signs": [],
+```
+
+to:
+
+```python
+"detected_signs": ["stop sign"],
+```
+
+Expected decision:
+
+```text
+Decision: STOP
+```
+
+A list can be empty, like `[]`, or it can hold values, like `["stop sign"]`.
+
+## Challenge 4: Try Low Battery
+
+Change:
+
+```python
+"battery_percent": 72,
+```
+
+to:
+
+```python
+"battery_percent": 20,
+```
+
+If the path is safe and there is no stop sign, expected decision:
+
+```text
+Decision: CHARGE
+```
+
+## Challenge 5: Add A Personal Message
 
 Find:
 
@@ -102,9 +161,9 @@ Add one new behavior idea in a comment at the bottom of `scripts/drive_decision.
 Example:
 
 ```python
-# Future idea: if battery is low, print CHARGE.
+# Future idea: if rain is detected, print SLOW.
 ```
 
 ## Reflection
 
-Which part felt most like autonomous driving: the sensor input, the decision rule, or the action?
+Which Python idea felt most useful for autonomous driving: a list, a dictionary, a function, a loop, or an `if` statement?

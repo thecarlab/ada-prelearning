@@ -1,0 +1,9 @@
+x,y,z,label
+-1,2,0,road
+0,1,0,road
+1,2,0,road
+0,4,0,cone
+-2,6,0,car
+1,7,0,pedestrian
+3,8,0,tree
+0,9,0,car
