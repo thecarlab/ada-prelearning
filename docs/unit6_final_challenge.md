@@ -12,7 +12,7 @@ Use `scripts/mini_autonomy_stack.py` to connect:
 - `Localization`: track the ego vehicle's `x`, `y`, and heading on a map.
 - `Planning`: choose whether to cruise, stop, avoid, or center.
 - `Control`: choose steering, throttle, and brake.
-- `Visualization`: draw the ego vehicle in the terminal and generate an HTML report.
+- `Visualization`: draw the ego vehicle in the terminal, generate an HTML report, and try a browser viewer.
 
 The ego vehicle is the vehicle our code controls.
 
@@ -48,6 +48,52 @@ outputs/mini_autonomy_report.html
 ```
 
 In Codespaces, open that file and use the built-in preview to see the ego vehicle route.
+
+## Run The Website Viewer
+
+This repo also includes a small website. It is not CARLA, but it gives students a browser-based place to see:
+
+- An ego vehicle in a top-down LiDAR view.
+- A camera frame.
+- KITTI-style point-cloud data.
+- Perception, localization, planning, and control readouts.
+
+From the repo root, run:
+
+```bash
+python -m http.server 8000
+```
+
+In Codespaces, open the forwarded port in your browser and add `/web_sim/` to the URL.
+
+The website starts with sample files:
+
+```text
+sample_data/sample_camera.svg
+sample_data/sample_pointcloud.csv
+```
+
+If your instructor provides KITTI data, place the files here:
+
+```text
+web_sim/user_data/image_2/000000.png
+web_sim/user_data/velodyne/000000.bin
+```
+
+Then type these paths into the website:
+
+```text
+user_data/image_2/000000.png
+user_data/velodyne/000000.bin
+```
+
+The website reads KITTI Velodyne `.bin` point clouds as repeated float32 values:
+
+```text
+x forward, y left, z up, reflectance
+```
+
+The `z` filter slider helps students remove road points and focus on taller obstacle points.
 
 ## Read The Code By System
 
@@ -168,3 +214,11 @@ Pick one autonomy cycle from the output and answer:
 ## Reflection
 
 Which part felt most like autonomous driving to you: perception, localization, planning, control, or visualization?
+
+## Website Reflection
+
+After using the website viewer, compare the terminal and website versions:
+
+- Which view made the ego vehicle easiest to understand?
+- Which view made the point cloud easiest to understand?
+- What changed when you moved the `z` filter slider?

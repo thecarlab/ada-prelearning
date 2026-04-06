@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADA Browser Autonomy Viewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">ADA Prelearning</p>
+    <h1>Browser Autonomy Viewer</h1>
+    <p>
+      A Codespaces-friendly website for visualizing an ego vehicle, a camera
+      frame, and KITTI-style LiDAR point-cloud data without installing CARLA.
+    </p>
+  </header>
+
+  <main>
+    <section class="panel controls">
+      <h2>Load Data</h2>
+      <p>
+        Use the sample files first. Later, put KITTI files under
+        <code>web_sim/user_data/</code> and update the paths below.
+      </p>
+
+      <div class="form-grid">
+        <label>
+          Camera image path
+          <input id="cameraPath" value="sample_data/sample_camera.svg">
+        </label>
+        <label>
+          Point cloud path
+          <input id="pointPath" value="sample_data/sample_pointcloud.csv">
+        </label>
+      </div>
+
+      <div class="button-row">
+        <button id="loadPathsButton">Load Paths</button>
+        <button id="resetButton">Reset Ego</button>
+        <button id="stepButton">Step Once</button>
+        <button id="playButton">Play</button>
+      </div>
+
+      <details>
+        <summary>Optional: choose files from your computer</summary>
+        <p>
+          This is useful if you open the website outside Codespaces. In a
+          Codespace, path loading is usually easier.
+        </p>
+        <label>
+          Camera image file
+          <input id="cameraFile" type="file" accept="image/*">
+        </label>
+        <label>
+          Point cloud file
+          <input id="pointFile" type="file" accept=".bin,.csv,.txt">
+        </label>
+      </details>
+
+      <div class="form-grid">
+        <label>
+          Ground filter z min
+          <input id="zFilter" type="range" min="-2.5" max="1.5" step="0.1" value="-1.2">
+          <span id="zFilterValue">-1.2</span>
+        </label>
+        <label>
+          Sensor range
+          <input id="sensorRange" type="range" min="5" max="50" step="1" value="25">
+          <span id="sensorRangeValue">25 m</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="viewer-grid">
+      <article class="panel">
+        <h2>Camera Frame</h2>
+        <div class="camera-frame">
+          <img id="cameraImage" alt="Loaded camera frame">
+        </div>
+      </article>
+
+      <article class="panel">
+        <h2>LiDAR Top-Down View</h2>
+        <canvas id="lidarCanvas" width="760" height="520" aria-label="Top-down LiDAR point cloud"></canvas>
+      </article>
+    </section>
+
+    <section class="panel stack">
+      <h2>Autonomy Stack Readout</h2>
+      <div class="readout-grid">
+        <div>
+          <h3>Perception</h3>
+          <p id="perceptionText">Load a point cloud to begin.</p>
+        </div>
+        <div>
+          <h3>Localization</h3>
+          <p id="localizationText">Ego pose: left 0.0 m, forward 0.0 m.</p>
+        </div>
+        <div>
+          <h3>Planning</h3>
+          <p id="planningText">Planner waiting for data.</p>
+        </div>
+        <div>
+          <h3>Control</h3>
+          <p id="controlText">steering=straight, throttle=0.0, brake=1.0</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Real KITTI Data Layout</h2>
+      <p>
+        After you provide KITTI data, try paths like these:
+      </p>
+      <pre><code>user_data/image_2/000000.png
+user_data/velodyne/000000.bin</code></pre>
+      <p>
+        The viewer reads KITTI Velodyne <code>.bin</code> files as repeated
+        float32 values: <code>x forward, y left, z up, reflectance</code>.
+      </p>
+    </section>
+  </main>
+
+  <script src="simulator.js"></script>
+</body>
+</html>

@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 outputs/
+web_sim/user_data/image_2/*
+web_sim/user_data/velodyne/*
+!web_sim/user_data/image_2/.gitkeep
+!web_sim/user_data/velodyne/.gitkeep

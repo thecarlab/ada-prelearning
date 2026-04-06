@@ -186,4 +186,4 @@ Sample 5: lane is center -> KEEP GOING
 
 Which sensor view was easier for you to understand: the lane text list, the fake camera grid, or the fake point-cloud map?
 
-In Unit 6, you will connect these ideas into one mini autonomy stack and view the ego vehicle route in a browser preview.
+In Unit 6, you will connect these ideas into one mini autonomy stack and try a website viewer for camera and point-cloud data.

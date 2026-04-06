@@ -10,24 +10,33 @@ By the end, you will:
 - Open a terminal.
 - Run your first ADA Python script.
 
-## Open Codespaces
+## Open Your Own Codespace
 
-If your instructor has published this repo on GitHub:
+Please do not create a Codespace directly from the main ADA course repository. Make your own copy first, then experiment there.
 
 1. Sign in to GitHub.
-2. Open the `ada-prelearning` repo page.
-3. Click `Code`.
-4. Click `Codespaces`.
-5. Click `Create codespace on main`.
-6. Wait for the browser coding space to open.
+2. Open the main `ada-prelearning` repo page.
+3. Click `Fork`.
+4. Create the fork under your own GitHub account.
+5. Open your fork, not the main course repo.
+6. Click `Code`.
+7. Click `Codespaces`.
+8. Click `Create codespace on main`.
+9. Wait for the browser coding space to open.
 
-Quick link format:
+Your fork URL will look something like:
 
 ```text
-https://codespaces.new/OWNER/ada-prelearning
+https://github.com/YOUR-GITHUB-USERNAME/ada-prelearning
 ```
 
-Because this repo is public, anyone can view it on GitHub. You may still need to sign in to create a Codespace.
+A Codespaces quick link for your fork may look like:
+
+```text
+https://codespaces.new/YOUR-GITHUB-USERNAME/ada-prelearning
+```
+
+Because this repo is public, anyone can view it on GitHub. You may still need to sign in to create your own fork and Codespace.
 
 ## Open A Terminal
 
@@ -97,4 +106,3 @@ python scripts/hello_ada.py
 ## Reflection
 
 What felt new today: the browser coding space, the terminal, or Python?
-
