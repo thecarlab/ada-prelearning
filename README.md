@@ -1,34 +1,35 @@
-# ada-prelearning
+<div align="center">
+  <p>
+    <img src="logo/UDLogo.jpg" alt="University of Delaware logo" width="320">
+    &nbsp;&nbsp;&nbsp;
+    <img src="logo/CARLabLogo.png" alt="CAR Lab logo" width="150">
+  </p>
 
-A tiny, friendly prelearning repo for students joining the University of Delaware Autonomous Driving Academy (ADA) summer camp.
+  <h1>ADA Prelearning</h1>
 
-This is a confidence builder before camp. You will try a browser coding environment, terminal commands, beginner Python, and a small autonomous-driving learning path.
+  <p>
+    A friendly browser-based prep course for students joining the
+    <strong>University of Delaware Autonomous Driving Academy</strong>.
+  </p>
 
-The units build from basic terminal/Python skills into perception, localization, planning, control, a ROS-style system preview, and a final mini autonomy challenge.
+  <p>
+    <a href="https://www.pcs.udel.edu/autonomous-driving/"><strong>Official UD Autonomous Driving Academy Website</strong></a>
+  </p>
+</div>
 
-## Data Note
+---
 
-This repo uses two kinds of data:
+## Welcome
 
-- Warm-up scripts use tiny fake data so beginners can read the whole example.
-- Later units can use KITTI tracking-task camera images and LiDAR `.bin` point clouds from `web_sim/user_data/`.
+This repo is a confidence builder before camp. You will try a browser coding environment, terminal commands, beginner Python, and a small autonomous-driving learning path.
 
-```text
-web_sim/user_data/image/000000.png
-web_sim/user_data/pointcloud/000000.bin
-```
-
-If the `.bin` file is missing, the KITTI perception scripts tell you to copy it into `web_sim/user_data/pointcloud/`.
-
-The real KITTI Vision Benchmark Suite is much larger and is meant for research. Before publishing real KITTI files, check the dataset terms and citation requirements on the official KITTI page: <https://www.cvlibs.net/datasets/kitti/>
-
-## Start In Your Own Browser Workspace
+The units build from basic terminal and Python skills into perception, localization, planning, control, a ROS-style system preview, and a final mini autonomy challenge.
 
 You do not need to install Python, VS Code, ROS 2, a simulator, or any hardware.
 
-Please do not create a Codespace directly from the main ADA course repository. Your experiments should happen in your own copy so the course materials stay clean for everyone.
+## Start Here
 
-Please follow the workflow:
+Please do not create a Codespace directly from the main ADA course repository. Your experiments should happen in your own copy so the course materials stay clean for everyone.
 
 1. Sign in to GitHub.
 2. Open the main `ada-prelearning` repository page.
@@ -54,6 +55,20 @@ https://codespaces.new/YOUR-GITHUB-USERNAME/ada-prelearning
 
 Replace `YOUR-GITHUB-USERNAME` with your GitHub username. This repo is intended to be public on GitHub, so anyone can view the learning materials. You may still need to sign in to GitHub to create a fork and Codespace.
 
+## Learning Path
+
+Follow the units in order. Each unit owns one part of the preparation path:
+
+| Unit | Topic | What you will practice |
+| --- | --- | --- |
+| 0 | [Getting Started](docs/getting_started.md) | Open your own browser workspace. |
+| 1 | [Linux Scavenger Hunt](docs/unit1_linux.md) | Use terminal commands and meet the AV architecture words. |
+| 2 | [Python Vehicle Assistant](docs/unit2_python_vehicle_assistant.md) | Practice beginner Python state and control flow. |
+| 3 | [Camera And Point-Cloud Perception](docs/unit3_sensor_and_decision.md) | Read camera and point-cloud sensor clues. |
+| 4 | [Localization And Coordinate Frames](docs/unit4_autonomous_driving_basics.md) | Move perception results from ego frame into map frame. |
+| 5 | [Tiny ROS 2 Teaser](docs/unit5_ros2_teaser.md) | Organize pieces as ROS-style nodes, topics, messages, and launch. |
+| 6 | [Mini Autonomy Stack Challenge](docs/unit6_final_challenge.md) | Connect the earlier pieces in one final mini challenge. |
+
 ## What You Will Learn
 
 - Open a coding environment in the browser.
@@ -67,18 +82,6 @@ Replace `YOUR-GITHUB-USERNAME` with your GitHub username. This repo is intended 
 - Preview ROS-style nodes, topics, messages, and launch concepts.
 - Generate an HTML ego-vehicle route visualization that works in Codespaces.
 - Open a small website that visualizes KITTI tracking-task camera images and LiDAR point clouds.
-
-## Units
-
-Follow the units in order. Each unit owns one part of the preparation path:
-
-1. [Getting Started](docs/getting_started.md): open your own browser workspace.
-2. [Unit 1: Linux Scavenger Hunt](docs/unit1_linux.md): use terminal commands and meet the AV architecture words.
-3. [Unit 2: Python Vehicle Assistant](docs/unit2_python_vehicle_assistant.md): practice beginner Python state and control flow.
-4. [Unit 3: Camera And Point-Cloud Perception](docs/unit3_sensor_and_decision.md): read camera and point-cloud sensor clues.
-5. [Unit 4: Localization And Coordinate Frames](docs/unit4_autonomous_driving_basics.md): move perception results from ego frame into map frame.
-6. [Unit 5: Tiny ROS 2 Teaser](docs/unit5_ros2_teaser.md): organize the pieces as ROS-style nodes, topics, messages, and launch.
-7. [Unit 6: Mini Autonomy Stack Challenge](docs/unit6_final_challenge.md): connect the earlier pieces in one final mini challenge.
 
 ## Quick Test
 
@@ -97,11 +100,16 @@ Today we will practice Python, Linux, and simple driving logic.
 Action: MOVE
 ```
 
-Try the beginner camera/point-cloud warm-ups and mini stack:
+Try the beginner camera and point-cloud warm-ups:
 
 ```bash
 python scripts/fake_camera_grid.py
 python scripts/fake_pointcloud_viewer.py
+```
+
+Then run the mini autonomy stack:
+
+```bash
 python scripts/mini_autonomy_stack.py
 ```
 
@@ -113,6 +121,20 @@ outputs/mini_autonomy_report.html
 
 In Codespaces, open that file and use the built-in preview to see the ego vehicle route.
 
+## KITTI Data Demos
+
+This repo uses two kinds of data:
+
+- Warm-up scripts use tiny fake data so beginners can read the whole example.
+- Later units can use KITTI tracking-task camera images and LiDAR `.bin` point clouds from `web_sim/user_data/`.
+
+Example file locations:
+
+```text
+web_sim/user_data/image/000000.png
+web_sim/user_data/pointcloud/000000.bin
+```
+
 Try the real-data KITTI tracking camera demo. Then try the LiDAR demos if the matching `.bin` point-cloud file is present:
 
 ```bash
@@ -121,11 +143,15 @@ python scripts/kitti_lidar_perception.py
 python scripts/kitti_perception_localization_demo.py
 ```
 
-If the point-cloud file is missing, copy it to:
+If the point-cloud file is missing, the KITTI perception scripts tell you to copy it into:
 
 ```text
 web_sim/user_data/pointcloud/000000.bin
 ```
+
+The real KITTI Vision Benchmark Suite is much larger and is meant for research. Before publishing real KITTI files, check the dataset terms and citation requirements on the official KITTI page: <https://www.cvlibs.net/datasets/kitti/>
+
+## Web Visualizer
 
 View the KITTI tracking-task frame sequence in the browser:
 
@@ -147,6 +173,8 @@ If you are using GitHub Codespaces, VS Code may show a port-forwarding popup for
 
 This website is only for visualization. It shows synchronized KITTI tracking-task camera images and LiDAR point clouds when matching files exist. Use `Next`, `Previous`, or `Play` to move through matching frame numbers.
 
+The image and point-cloud filenames must match by frame number:
+
 ```text
 web_sim/user_data/image/000000.png
 web_sim/user_data/pointcloud/000000.bin
@@ -154,7 +182,7 @@ web_sim/user_data/image/000001.png
 web_sim/user_data/pointcloud/000001.bin
 ```
 
-The image and point-cloud filenames must match by frame number. The website uses these website-relative folders by default:
+The website uses these website-relative folders by default:
 
 ```text
 user_data/image
@@ -165,7 +193,7 @@ The `web_sim/user_data` image and point-cloud folders are ignored by git so larg
 
 Longer KITTI sequences should be added only if your instructor tells you to include them.
 
-Other Python scripts to try:
+## More Scripts To Try
 
 ```bash
 python scripts/vehicle_assistant.py

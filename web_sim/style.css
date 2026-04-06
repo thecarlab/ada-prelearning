@@ -134,6 +134,28 @@ canvas {
   background: #020617;
 }
 
+.brand-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.brand-logo {
+  background: white;
+  border-radius: 0.8rem;
+  box-shadow: 0 12px 30px rgb(15 23 42 / 0.18);
+  height: 4.5rem;
+  object-fit: contain;
+  padding: 0.55rem;
+  width: auto;
+}
+
+.brand-logo-carlab {
+  height: 5.5rem;
+}
+
 code {
   background: #f1f5f9;
   border-radius: 0.45rem;
@@ -143,5 +165,16 @@ code {
 @media (max-width: 900px) {
   .viewer-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-logo {
+    height: 3.4rem;
+    max-width: 100%;
+  }
+
+  .brand-logo-carlab {
+    height: 4.2rem;
   }
 }
