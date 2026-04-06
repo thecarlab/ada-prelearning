@@ -14,6 +14,7 @@ Run it in GitHub Codespaces with:
 """
 
 from html import escape
+import math
 from pathlib import Path
 
 ROAD_MIN_X = 4
@@ -276,9 +277,28 @@ def write_html_report(path_history, final_events):
         top = (GOAL["y"] - pose["y"]) * size + 22
         points.append(f"{left},{top}")
 
-    final_pose = path_history[-1]
-    ego_left = (final_pose["x"] - (ROAD_MIN_X - 2)) * size + 22
-    ego_top = (GOAL["y"] - final_pose["y"]) * size + 22
+    arrow_points = []
+    for previous_pose, next_pose in zip(path_history, path_history[1:]):
+        if previous_pose == next_pose:
+            continue
+
+        start_x = (previous_pose["x"] - (ROAD_MIN_X - 2)) * size + 22
+        start_y = (GOAL["y"] - previous_pose["y"]) * size + 22
+        end_x = (next_pose["x"] - (ROAD_MIN_X - 2)) * size + 22
+        end_y = (GOAL["y"] - next_pose["y"]) * size + 22
+        mid_x = (start_x + end_x) / 2
+        mid_y = (start_y + end_y) / 2
+        angle = math.degrees(math.atan2(end_y - start_y, end_x - start_x))
+        arrow_points.append(
+            "<polygon points='0,-7 14,0 0,7' fill='#1d4ed8' "
+            f"transform='translate({mid_x:.1f} {mid_y:.1f}) rotate({angle:.1f})'/>"
+        )
+
+    start_pose = path_history[0]
+    start_left = (start_pose["x"] - (ROAD_MIN_X - 2)) * size + 22
+    start_top = (GOAL["y"] - start_pose["y"]) * size + 22
+    goal_left = (GOAL["x"] - (ROAD_MIN_X - 2)) * size + 22
+    goal_top = (GOAL["y"] - GOAL["y"]) * size + 22
     event_items = "\n".join(f"<li>{escape(event)}</li>" for event in final_events)
     html_legend = ", ".join(
         f"<code>{escape(symbol)}</code> {escape(meaning)}"
@@ -302,12 +322,15 @@ def write_html_report(path_history, final_events):
   <svg viewBox="0 0 484 484" role="img" aria-label="Top-down map with ego vehicle route">
     {''.join(cells)}
     <polyline points="{' '.join(points)}" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
-    <polygon points="{ego_left},{ego_top - 16} {ego_left - 13},{ego_top + 14} {ego_left + 13},{ego_top + 14}"
+    {''.join(arrow_points)}
+    <polygon points="{start_left},{start_top - 16} {start_left - 13},{start_top + 14} {start_left + 13},{start_top + 14}"
       fill="#111827" stroke="#ffffff" stroke-width="2"/>
-    <text x="{ego_left}" y="{ego_top + 5}" text-anchor="middle" font-size="12" font-family="monospace" fill="#ffffff">E</text>
+    <text x="{start_left}" y="{start_top + 5}" text-anchor="middle" font-size="12" font-family="monospace" fill="#ffffff">E</text>
+    <circle cx="{goal_left}" cy="{goal_top}" r="14" fill="#16a34a" stroke="#ffffff" stroke-width="3"/>
+    <text x="{goal_left}" y="{goal_top + 5}" text-anchor="middle" font-size="14" font-family="monospace" fill="#ffffff">G</text>
   </svg>
   <h2>Legend</h2>
-  <p>{html_legend}. Blue line is the estimated ego route.</p>
+  <p>{html_legend}. Blue line and arrows show the estimated ego route from E start to G goal.</p>
   <h2>What Happened</h2>
   <ol>
     {event_items}

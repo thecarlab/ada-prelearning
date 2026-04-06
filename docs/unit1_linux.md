@@ -2,9 +2,11 @@
 
 Linux is the system inside your Codespace. The terminal lets you give it short text commands.
 
+This unit owns the terminal basics. You will not write Python yet; you will use `pwd`, `ls`, `cd`, `mkdir`, and `cat` to move through a small autonomous-driving architecture scavenger hunt.
+
 ## Goal
 
-Use a few commands to follow autonomous-driving themed clues.
+Use a few commands to follow autonomous-driving architecture printouts.
 
 Commands for today:
 
@@ -37,7 +39,7 @@ ls
 Expected output includes:
 
 ```text
-README.md  docs  scripts
+LICENSE  README.md  docs  scripts  web_sim
 ```
 
 Move to the clue folder:
@@ -46,7 +48,7 @@ Move to the clue folder:
 cd scripts/scavenger_clues
 ```
 
-Read the first clue:
+Read the first printout:
 
 ```bash
 cat start.txt
@@ -55,9 +57,13 @@ cat start.txt
 Expected output:
 
 ```text
-Start here, driver! Your first clue is in the camera folder.
-Use: cd camera
-Then use: cat clue.txt
+Start here, autonomy engineer!
+This scavenger hunt follows a modern autonomous-driving architecture:
+sensing -> perception -> localization -> planning -> control -> end-to-end AV agent
+
+Your first printout is in the 01_sensing folder.
+Use: cd 01_sensing
+Then use: cat printout.txt
 ```
 
 ## Follow The Clues
@@ -65,22 +71,24 @@ Then use: cat clue.txt
 Run these commands one at a time:
 
 ```bash
-cd camera
-cat clue.txt
-cd ../lane
-cat clue.txt
-cd ../stop_sign
-cat clue.txt
-cd ../sensor
-cat clue.txt
-cd ../route
-cat final_clue.txt
+cd 01_sensing
+cat printout.txt
+cd ../02_perception
+cat printout.txt
+cd ../03_localization
+cat printout.txt
+cd ../04_planning
+cat printout.txt
+cd ../05_control
+cat printout.txt
+cd ../06_end_to_end_av_agent
+cat final_printout.txt
 ```
 
 Expected final output:
 
 ```text
-Route complete! You used the terminal like an ADA navigator.
+Route complete! You used the terminal like an ADA autonomy engineer.
 ```
 
 ## Make Your Own Garage Folder
@@ -111,7 +119,7 @@ my_garage
 
 ## Tiny Modification
 
-Open `scripts/scavenger_clues/route/final_clue.txt`.
+Open `scripts/scavenger_clues/06_end_to_end_av_agent/final_printout.txt`.
 
 Add one friendly sentence, like:
 
@@ -122,9 +130,11 @@ Nice driving, future ADA engineer!
 Then read it again:
 
 ```bash
-cat scripts/scavenger_clues/route/final_clue.txt
+cat scripts/scavenger_clues/06_end_to_end_av_agent/final_printout.txt
 ```
 
 ## Reflection
 
 Which terminal command felt most useful: `pwd`, `ls`, `cd`, `mkdir`, or `cat`?
+
+Next, Unit 2 uses the same terminal to run your first small Python vehicle assistant.

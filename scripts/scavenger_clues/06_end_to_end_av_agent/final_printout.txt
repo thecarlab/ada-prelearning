@@ -1,0 +1,18 @@
+END-TO-END AV AGENT RESEARCH
+
+Classic modular stack:
+sensing -> perception -> localization -> prediction -> planning -> control
+
+End-to-end AV agents try to learn a larger part of that stack in one model. For example, a model may take camera images, LiDAR, sensor history, map or route context, and a navigation command, then output a future trajectory, waypoints, or driving actions.
+
+Well-known and recent research examples students may hear about:
+- TransFuser: transformer-based camera and LiDAR fusion for driving.
+- UniAD: a unified planning-oriented model connecting perception, prediction, and planning.
+- VAD: vectorized scene representation for efficient autonomous-driving planning.
+- DriveLM-Agent: a vision-language driving agent that reasons from perception toward planning.
+- OpenDriveVLA and DriveAgent-R1: newer vision-language-action style AV-agent research.
+- EMMA: Waymo research using a multimodal model to predict driving trajectories from camera and route context.
+
+Key idea: end-to-end models are powerful research tools, but real safety-critical AV systems still need careful evaluation, simulation, fallback logic, maps, monitoring, and engineering around the model.
+
+Route complete! You used the terminal like an ADA autonomy engineer.

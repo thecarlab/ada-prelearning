@@ -1,189 +1,159 @@
-# Unit 4: Autonomous Driving Basics
+# Unit 4: Localization And Coordinate Frames
 
-Autonomous driving can sound huge, but the basic idea is easier to start with.
+Autonomous driving can sound huge, but one core idea is simple: every module must agree on where things are.
 
-## Four Simple Steps
+Unit 3 focused on sensor perception: camera-image clues, ego-frame point positions, and KITTI tracking-task LiDAR obstacle clusters.
 
-1. Sense the world.
-2. Understand what is around the car.
-3. Make a driving decision.
-4. Send an action.
+Unit 4 focuses on localization and coordinate frames: taking a perception result like "6.6 meters forward and 2.6 meters right of the ego vehicle" and placing it into a shared map frame.
 
-Example:
+This unit owns map-frame localization. It reuses perception clusters, but it does not teach camera perception, LiDAR clustering, ROS topics, or controller tuning.
 
-```text
-Sense: the lane looks a little left
-Understand: the car is not centered
-Decide: adjust right
-Action: TURN RIGHT
-```
+## Goal
 
-In Unit 3, your fake distance number was the sensor input. The output was an action like `MOVE`, `SLOW`, or `STOP`.
+Practice these autonomous-driving ideas:
 
-Autonomous-driving teams often use more specific names:
+- `Ego frame`: positions measured relative to the vehicle.
+- `Map frame`: positions measured in a shared world or map.
+- `Pose`: the ego vehicle's `x`, `y`, and heading.
+- `Odometry`: motion information such as speed and yaw rate.
+- `Transform`: math that moves a point from one frame to another.
 
-- `Perception`: detect lanes, signs, people, cones, and cars.
-- `Localization`: estimate where the ego vehicle is on a map.
-- `Planning`: choose a safe next place to drive.
-- `Control`: turn the plan into steering, throttle, and brake commands.
+Practice these Python ideas:
 
-The ego vehicle means the vehicle we are controlling.
+- A dataclass can group related values.
+- A function can calculate a new pose.
+- A function can transform coordinates.
+- A loop can print several transformed perception clusters.
 
-## Tiny Lane Checker With A List
+The ego vehicle means the vehicle our code is describing.
 
-Run:
+## Coordinate Frame Idea
 
-```bash
-python scripts/fake_lane_checker.py
-```
-
-Expected output:
+Perception often starts in the ego frame:
 
 ```text
-Fake lane checker online.
-Sample 1: lane is center -> KEEP GOING
-Sample 2: lane is left -> TURN RIGHT
-Sample 3: lane is right -> TURN LEFT
-Sample 4: lane is unknown -> SLOW
+object: 6.6 meters forward, 2.6 meters right of the ego vehicle
 ```
 
-Open `scripts/fake_lane_checker.py`.
+Localization gives the ego pose in the map frame:
 
-Look for:
-
-```python
-lane_samples = ["center", "left", "right", "unknown"]
+```text
+ego pose: x=101.39m, y=20.13m, yaw=5.4deg
 ```
 
-Python reads this list from left to right. The loop checks each lane status and prints a steering action.
+After a transform, planning can reason in one shared frame:
 
-## Visualize A Fake Camera Image
+```text
+object map position: x=108.3m, y=18.2m
+```
 
-Real autonomous-driving datasets often include camera images. The KITTI dataset is one famous research benchmark with camera and laser scanner data.
+That is the main experiment for this unit.
 
-This repo does not include real KITTI files. Instead, it uses a tiny fake KITTI-style text grid:
+## Run The Localization Transform Demo
 
-Run:
+This script computes the rough perception clusters internally, then focuses on the localization transform. You do not need to rerun Unit 3 first.
+
+First make sure the matching point-cloud file exists:
+
+```text
+web_sim/user_data/pointcloud/000000.bin
+```
 
 ```bash
-python scripts/fake_camera_grid.py
+python scripts/kitti_perception_localization_demo.py
 ```
 
 Expected output starts like:
 
 ```text
-KITTI-style fake camera frame
-Legend: L/R lane markers, S stop sign, - road stripe, . background
+KITTI tracking perception + localization-frame demo
+Input file: web_sim/user_data/pointcloud/000000.bin
+Localization state:
+- start pose: x=100.00m, y=20.00m, yaw=5.0deg
+- odometry input: speed=7.0m/s, yaw_rate=2.0deg/s, dt=0.2s
+- predicted pose: x=101.39m, y=20.13m, yaw=5.4deg
 ```
 
 Expected output also includes:
 
 ```text
-Camera summary:
-- lane marker pixels: 12
-- stop sign pixels: 4
-- estimated lane offset: 0.0
-Decision: STOP
-Reason: stop sign pixels were found
+Perception clusters transformed into the map frame:
+1. large structure or mixed obstacle | ego=(18.7m forward, -4.4m left) -> map=(120.4m, 17.5m)
+2. vehicle-sized obstacle | ego=(6.6m forward, -2.6m left) -> map=(108.3m, 18.2m)
 ```
 
-In the fake camera grid:
+If the `.bin` file is missing, the script tells you to copy it into `web_sim/user_data/pointcloud/000000.bin`.
 
-- `L` and `R` are lane markers.
-- `S` is a fake stop sign.
-- `.` is background.
-- `-` is a road stripe.
+Why this matters:
 
-## Read The Camera Code Logic
+- Perception often reports objects in the ego vehicle frame.
+- Localization estimates the ego vehicle pose in a map frame.
+- Planning needs objects and the ego vehicle in a shared frame before it can reason about safe paths.
 
-Open `scripts/fake_camera_grid.py`.
+This script uses a small odometry update and a 2D transform. Production AV localization can fuse GNSS, IMU, wheel odometry, LiDAR or camera map matching, and SLAM.
+
+## Read The Localization Code Logic
+
+Open `scripts/kitti_perception_localization_demo.py`.
 
 Look for:
 
-```python
-def count_pixels(frame, symbol):
+```text
+integrate_odometry
 ```
 
-This function counts symbols in the fake image.
+This predicts the next ego pose from motion measurements.
 
 Look for:
 
-```python
-def estimate_lane_offset(frame):
-```
-
-This function finds `L` and `R` lane markers and estimates if the lane is centered.
-
-Look for:
-
-```python
-def choose_camera_action(stop_pixels, lane_offset):
-```
-
-This function chooses a simple action from the fake camera clues.
-
-## Tiny Modification
-
-Open `scripts/fake_data/kitti_style_camera_grid.txt`.
-
-Change the four `S` characters to dots:
-
 ```text
-......SS.......
-......SS.......
+ego_to_map
 ```
 
-becomes:
+This transforms a perception result from ego coordinates into map coordinates.
 
-```text
-...............
-...............
-```
+## Tiny Modification: Change The Pose
 
-Run:
-
-```bash
-python scripts/fake_camera_grid.py
-```
-
-Expected output now includes:
-
-```text
-Decision: KEEP GOING
-```
-
-If you want the original stop sign back, change the dots back to `S`.
-
-## Extra Tiny Modification
-
-Open `scripts/fake_lane_checker.py`.
+Open `scripts/kitti_perception_localization_demo.py`.
 
 Find:
 
 ```python
-lane_samples = ["center", "left", "right", "unknown"]
+start_pose = Pose2D(x_m=100.0, y_m=20.0, yaw_rad=math.radians(5.0))
 ```
 
-Try adding another sample:
+Try changing the yaw to `15.0` degrees:
 
 ```python
-lane_samples = ["center", "left", "right", "unknown", "center"]
+start_pose = Pose2D(x_m=100.0, y_m=20.0, yaw_rad=math.radians(15.0))
 ```
 
 Run:
 
 ```bash
-python scripts/fake_lane_checker.py
+python scripts/kitti_perception_localization_demo.py
 ```
 
-Expected output includes:
+Watch how the map coordinates change even though the ego-frame perception clusters are the same.
 
-```text
-Sample 5: lane is center -> KEEP GOING
+## Tiny Modification: Change The Speed
+
+Find:
+
+```python
+speed_mps=7.0,
 ```
+
+Try:
+
+```python
+speed_mps=12.0,
+```
+
+Run the script again. Watch how the predicted pose changes. Then change the speed back to `7.0`.
 
 ## Reflection
 
-Which sensor view was easier for you to understand: the lane text list, the fake camera grid, or the fake point-cloud map?
+Why does planning need perception objects and the ego vehicle to be in a shared coordinate frame?
 
-In Unit 6, you will connect these ideas into one mini autonomy stack and try a website viewer for camera and point-cloud data.
+In Unit 5, you will preview how these pieces become ROS-style nodes and topics.

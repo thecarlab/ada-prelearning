@@ -1,0 +1,15 @@
+SENSING MODULE
+
+Job: collect raw measurements from the world and the ego vehicle.
+
+Common sensors:
+- Cameras measure light, color, lanes, signs, signals, and object appearance.
+- LiDAR measures 3D distance points around the vehicle.
+- Radar measures distance and relative speed, often working well in rain or fog.
+- GPS, IMU, and wheel odometry measure vehicle position and motion clues.
+
+Key idea: sensing does not understand the scene yet. It creates time-stamped data for the rest of the AV stack.
+
+Next printout:
+Use: cd ../02_perception
+Then use: cat printout.txt

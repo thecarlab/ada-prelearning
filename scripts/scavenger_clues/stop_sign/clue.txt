@@ -1,3 +1,0 @@
-Stop sign clue: A stop sign means the safe action is STOP.
-Next clue: go to the sensor folder.
-

@@ -1,0 +1,16 @@
+PERCEPTION MODULE
+
+Job: turn raw sensor data into useful facts about the driving scene.
+
+Perception may detect:
+- lanes and road edges
+- traffic lights and traffic signs
+- cars, trucks, bikes, and pedestrians
+- drivable space, curbs, cones, and obstacles
+- 3D object boxes, object tracks, and free space
+
+Key idea: perception answers "What is around me?" It often fuses camera, LiDAR, and radar data so the vehicle has a stronger view than any one sensor alone.
+
+Next printout:
+Use: cd ../03_localization
+Then use: cat printout.txt

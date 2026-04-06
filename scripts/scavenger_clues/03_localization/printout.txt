@@ -1,0 +1,17 @@
+LOCALIZATION MODULE
+
+Job: estimate where the ego vehicle is.
+
+Localization tracks:
+- position on the road or map
+- heading direction
+- speed and motion
+- lane-level location when high-definition maps are available
+
+Common inputs include GPS, IMU, wheel odometry, camera or LiDAR map matching, and sometimes SLAM.
+
+Key idea: localization answers "Where am I?" Planning and control need this pose before they can choose and follow a safe path.
+
+Next printout:
+Use: cd ../04_planning
+Then use: cat printout.txt

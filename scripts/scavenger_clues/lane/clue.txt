@@ -1,3 +1,0 @@
-Lane clue: Staying centered helps a vehicle drive safely.
-Next clue: go to the stop_sign folder.
-

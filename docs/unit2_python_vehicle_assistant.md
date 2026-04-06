@@ -4,6 +4,8 @@ In this unit, you will run a tiny smart-car assistant.
 
 It understands simple commands like `start`, `drive`, `park`, `charge`, `horn`, and `status`.
 
+This unit owns beginner Python state. You will practice variables, dictionaries, lists, functions, and `if` statements before moving into real sensor data.
+
 ## Goal
 
 Practice Python by running a script and changing a small message.
@@ -128,3 +130,5 @@ python scripts/vehicle_assistant.py
 ## Reflection
 
 If your vehicle assistant had one new command, what would it be?
+
+Next, Unit 3 uses those same Python ideas to read camera and point-cloud sensor data.

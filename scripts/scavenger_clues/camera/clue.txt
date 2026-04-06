@@ -1,3 +1,0 @@
-Camera clue: A camera can help a vehicle see lane lines.
-Next clue: go to the lane folder.
-

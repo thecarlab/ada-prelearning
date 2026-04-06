@@ -1,0 +1,16 @@
+CONTROL MODULE
+
+Job: turn the planned path into vehicle commands.
+
+Control sends commands such as:
+- steering
+- throttle
+- brake
+
+Common control ideas include PID control and model predictive control. A feedback controller compares the target path with the real vehicle state and keeps correcting smoothly.
+
+Key idea: control answers "How do I make the car follow the plan?" It must respect vehicle dynamics, comfort, and safety.
+
+Next printout:
+Use: cd ../06_end_to_end_av_agent
+Then use: cat final_printout.txt

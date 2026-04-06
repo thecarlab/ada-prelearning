@@ -1,4 +1,7 @@
-Start here, driver! Your first clue is in the camera folder.
-Use: cd camera
-Then use: cat clue.txt
+Start here, autonomy engineer!
+This scavenger hunt follows a modern autonomous-driving architecture:
+sensing -> perception -> localization -> planning -> control -> end-to-end AV agent
 
+Your first printout is in the 01_sensing folder.
+Use: cd 01_sensing
+Then use: cat printout.txt

@@ -1,3 +1,0 @@
-Sensor clue: A distance sensor can help decide MOVE, SLOW, or STOP.
-Next clue: go to the route folder.
-

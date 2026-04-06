@@ -1,0 +1,14 @@
+PLANNING MODULE
+
+Job: choose a safe future path for the ego vehicle.
+
+Planning may include:
+- route planning: which roads or turns to take
+- behavior planning: yield, stop, follow, merge, or change lanes
+- motion planning: the exact path and speed over the next few seconds
+
+Key idea: planning answers "What should I do next?" It uses perception, prediction, localization, maps, traffic rules, and safety limits.
+
+Next printout:
+Use: cd ../05_control
+Then use: cat printout.txt

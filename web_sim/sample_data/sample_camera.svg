@@ -12,5 +12,5 @@
   <circle cx="235" cy="310" r="16" fill="#0f172a"/>
   <circle cx="300" cy="310" r="16" fill="#0f172a"/>
   <text x="40" y="70" fill="#0f172a" font-family="Arial, sans-serif" font-size="34" font-weight="700">Sample camera frame</text>
-  <text x="40" y="112" fill="#0f172a" font-family="Arial, sans-serif" font-size="24">Replace this with a KITTI image_2 PNG when available.</text>
+  <text x="40" y="112" fill="#0f172a" font-family="Arial, sans-serif" font-size="24">Replace this with a KITTI tracking PNG when available.</text>
 </svg>
