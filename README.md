@@ -143,7 +143,3 @@ python scripts/drive_decision.py
 - If `python` does not work, try `python3` instead.
 - If you get lost in the terminal, run `pwd` to see where you are.
 - If you opened the wrong folder, run `pwd` first. Your own fork will usually be under `/workspaces/ada-prelearning` in Codespaces.
-
-## Instructor Note
-
-This repository supports ADA autonomous driving camp by helping students feel comfortable before camp starts. It should stay short, lightweight, and beginner friendly. It should not replace the first-day ROS 2 class or any official camp instruction.
