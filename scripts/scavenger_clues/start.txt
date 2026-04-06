@@ -1,0 +1,4 @@
+Start here, driver! Your first clue is in the camera folder.
+Use: cd camera
+Then use: cat clue.txt
+
