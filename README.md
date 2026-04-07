@@ -55,6 +55,40 @@ https://codespaces.new/YOUR-GITHUB-USERNAME/ada-prelearning
 
 Replace `YOUR-GITHUB-USERNAME` with your GitHub username. This repo is intended to be public on GitHub, so anyone can view the learning materials. You may still need to sign in to GitHub to create a fork and Codespace.
 
+## 🔄 Keep Your Copy Up To Date
+
+Instructors may add new files or update instructions in the official ADA Prelearning repository. The easiest way to get those updates is to use the GitHub website.
+
+1. Open your own fork on GitHub, not the official course repository.
+2. Make sure you are on the `main` branch.
+3. Look above the file list and click `Sync fork`.
+4. If GitHub says your branch is behind, click `Update branch`.
+5. Wait for GitHub to finish updating your fork.
+6. Open your updated fork or create a new Codespace from it to see the newest course files.
+
+If GitHub says there are conflicts, keep your current fork as a backup and make a fresh copy:
+
+1. Open your current fork on GitHub.
+2. Click `Settings`.
+3. Rename your old fork to something like `ada-prelearning-backup`.
+4. Open the official ADA Prelearning repository again.
+5. Click `Fork` to create a new fork.
+6. Open or create a Codespace from the new fork to see the newest course files.
+
+## 💬 Questions And Discussions
+
+If you have a question, please add it as a discussion under this GitHub repository so instructors and other students can discuss the issue and solve it together.
+
+1. Open the main ADA Prelearning GitHub repository page.
+2. Click the `Discussions` tab near the top of the repository.
+3. Click `New discussion`.
+4. Choose the `Q&A` category if it is available.
+5. Write a clear title, such as `Unit 2 question about loops`.
+6. In the message, include the unit number, what you tried, what happened, and any error message you saw.
+7. Click `Start discussion`.
+
+Please do not include private information, passwords, or secret keys in a discussion. 
+
 ## 🗺️ Learning Path
 
 Follow the units in order. Each unit owns one part of the preparation path:
