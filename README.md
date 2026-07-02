@@ -169,6 +169,37 @@ web_sim/user_data/image/000000.png
 web_sim/user_data/pointcloud/000000.bin
 ```
 
+### Download the KITTI tracking data
+
+The dataset files are not stored in this Git repository because they are large. To download them from KITTI:
+
+1. Open the official [KITTI Object Tracking Evaluation page](https://www.cvlibs.net/datasets/kitti/eval_tracking.php).
+2. Create a KITTI account or log in. KITTI requires an account before showing the dataset download links.
+3. Select **Download Velodyne point clouds, if you want to use laser information**. The complete download is about 35 GB, so make sure you have enough disk space. If you also need the matching camera images, select **Download left color images of tracking data set** (about 15 GB).
+4. Extract the downloaded archive outside this repository. In the extracted training data, sequence `0000`, frame `000000`, is normally located at:
+
+   ```text
+   training/velodyne/0000/000000.bin
+   ```
+
+5. From the root of this repository, create the local data folder and copy that frame into it:
+
+   ```bash
+   mkdir -p web_sim/user_data/pointcloud
+   cp /path/to/extracted/training/velodyne/0000/000000.bin web_sim/user_data/pointcloud/000000.bin
+   ```
+
+Replace `/path/to/extracted` with the actual location where you extracted the KITTI archive. If you use a different frame, keep its six-digit filename and copy the camera image with the same frame number into `web_sim/user_data/image/`.
+
+For example, these files form a matching pair:
+
+```text
+web_sim/user_data/image/000000.png
+web_sim/user_data/pointcloud/000000.bin
+```
+
+The four-digit folder name `0000` identifies the KITTI sequence; the six-digit filename `000000` identifies a frame within that sequence. These local dataset files are ignored by Git and should not be committed.
+
 Try the real-data KITTI tracking camera demo. Then try the LiDAR demos if the matching `.bin` point-cloud file is present:
 
 ```bash
